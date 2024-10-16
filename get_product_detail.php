@@ -34,6 +34,3 @@ echo json_encode($arr);
 
 $stmt->close();
 $conn->close();
-
-
-// print_r(json_encode($arr));
