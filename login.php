@@ -9,13 +9,16 @@ $stmt->bind_param('ss', $email, $password);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$data = $result->fetch_assoc();
+$data = [];
+while ($row = $result->fetch_assoc()) {
+    $data[] = $row; 
+}
 
-if ($data) {
+if (!empty($data)) {
     $arr = [
         'success' => true,
         'message' => 'Đăng nhập thành công !',
-        'result' => $data,
+        'result' => $data
     ];
 } else {
     $arr = [
@@ -28,4 +31,3 @@ echo json_encode($arr);
 
 $stmt->close();
 $conn->close();
-?>
