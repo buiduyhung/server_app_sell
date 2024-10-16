@@ -16,20 +16,20 @@ if ($data) {
     if (!empty($result)) {
         $arr = [
             'success' => true,
-            'message' => 'Data retrieved successfully',
+            'message' => 'Lấy dữ liệu sản phẩm thành công',
             'result' => $result 
         ];
     } else {
         $arr = [
             'success' => false,
-            'message' => 'No data found',
+            'message' => 'Không có dữ liệu về sản phẩm',
             'result' => null
         ];
     }
 } else {
     $arr = [
         'success' => false,
-        'message' => 'Query execution failed',
+        'message' => 'Không có dữ liệu về sản phẩm',
         'result' => null
     ];
 }

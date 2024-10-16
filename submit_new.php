@@ -13,7 +13,7 @@ if (isset($_POST['submit_password']) && isset($_POST['email']) && isset($_POST['
     $stmt->bind_param("ss", $pass, $email);
 
     if ($stmt->execute()) {
-        echo "Mật khẩu đã được cập nhật thành công.";
+        echo "Mật khẩu đã được cập nhật thành công!";
     } else {
         echo "Có lỗi xảy ra khi cập nhật mật khẩu.";
     }

@@ -28,12 +28,12 @@ if ($numrow > 0) {
     if ($stmt->execute()) {
         $arr = [
             'success' => true,
-            'message' => 'Đăng ký tài khoản thành công !',
+            'message' => 'Đăng ký tài khoản thành công!',
         ];
     } else {
         $arr = [
             'success' => false,
-            'message' => 'Đăng ký tài khoản chưa thành công',
+            'message' => 'Đăng ký tài khoản chưa thành công. Vui lòng kiểm tra lại!',
         ];
     }
 }

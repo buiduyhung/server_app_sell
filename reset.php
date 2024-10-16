@@ -24,7 +24,7 @@ while ($row = $data->fetch_assoc()) {
 if (empty($result)) {
     $arr = [
         'success' => false,
-        'message' => 'Email không chính xác. Vui lòng kiểm tra lại!',
+        'message' => 'Email chưa được đăng ký. Vui lòng kiểm tra lại!',
         'result' => $result
     ];
     echo json_encode($arr);
@@ -37,7 +37,7 @@ if (empty($result)) {
     $mail->isSMTP();
     $mail->SMTPAuth = true;
     $mail->Username = "nongsanviet.bdh@gmail.com";
-    $mail->Password = "iqlu icfw qopl lvhk"; 
+    $mail->Password = "iqlu icfw qopl lvhk";
     $mail->SMTPSecure = "ssl";
     $mail->Host = "smtp.gmail.com";
     $mail->Port = 465;
@@ -49,9 +49,19 @@ if (empty($result)) {
     $mail->Body = 'Click vào liên kết sau để đặt lại mật khẩu của bạn: ' . $link;
 
     if ($mail->send()) {
-        echo "Vui lòng kiểm tra email và nhấp vào liên kết để đặt lại mật khẩu.";
+        $arr = [
+            'success' => true,
+            'message' => 'Vui lòng kiểm tra email và nhấp vào liên kết để đặt lại mật khẩu!',
+            'result' => $result
+        ];
+        echo json_encode($arr);
     } else {
-        echo "Mail Error: " . $mail->ErrorInfo;
+        $arr = [
+            'success' => false,
+            'message' => "Mail Error: " . $mail->ErrorInfo,
+            'result' => $result
+        ];
+        echo json_encode($arr);
     }
 }
 

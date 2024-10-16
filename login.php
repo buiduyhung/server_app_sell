@@ -17,13 +17,13 @@ while ($row = $result->fetch_assoc()) {
 if (!empty($data)) {
     $arr = [
         'success' => true,
-        'message' => 'Đăng nhập thành công !',
+        'message' => 'Đăng nhập thành công!',
         'result' => $data
     ];
 } else {
     $arr = [
         'success' => false,
-        'message' => 'Tài khoản hoặc mật khẩu sai. Vui lòng kiểm tra lại'
+        'message' => 'Tài khoản hoặc mật chưa đúng. Vui lòng kiểm tra lại!'
     ];
 }
 
