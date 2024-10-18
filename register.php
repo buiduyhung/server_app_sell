@@ -6,7 +6,6 @@ $password = $_POST['password'];
 $username = $_POST['username'];
 $phone = $_POST['phone'];
 
-// Prepare a statement to check if the email already exists to prevent SQL injection
 $query = 'SELECT * FROM `users` WHERE `email` = ?';
 $stmt_check = $conn->prepare($query);
 $stmt_check->bind_param('s', $email);
@@ -20,11 +19,9 @@ if ($numrow > 0) {
         'message' => 'Email đã tồn tại',
     ];
 } else {
-    // Prepare the statement to insert the data
     $stmt = $conn->prepare('INSERT INTO `users`(`email`, `password`, `username`, `phone`) VALUES (?, ?, ?, ?)');
     $stmt->bind_param('ssss', $email, $password, $username, $phone);
 
-    // Execute the query and check if it was successful
     if ($stmt->execute()) {
         $arr = [
             'success' => true,
@@ -38,10 +35,8 @@ if ($numrow > 0) {
     }
 }
 
-// Return the response as JSON
 echo json_encode($arr);
 
-// Close the statement and connection
 $stmt_check->close();
 if (isset($stmt)) {
     $stmt->close();

@@ -3,11 +3,9 @@ include "connect.php";
 
 $query = "SELECT * FROM products ORDER BY id DESC";
 $data = mysqli_query($conn, $query);
-
-// Initialize result array
 $result = array();
 
-// Check if the query executed successfully
+
 if ($data) {
     while ($row = mysqli_fetch_assoc($data)) {
         $result[] = $row;
@@ -34,8 +32,6 @@ if ($data) {
     ];
 }
 
-// Output JSON response
-echo json_encode($arr);
 
-// Close the database connection
+echo json_encode($arr);
 mysqli_close($conn);
