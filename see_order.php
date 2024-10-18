@@ -3,7 +3,7 @@ include "connect.php";
 
 $user_id = $_POST['user_id'];
 
-$query = "SELECT * FROM `orders` WHERE `user_id` = ?";
+$query = "SELECT * FROM `orders` WHERE `user_id` = ? ORDER BY `id` DESC";
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
 mysqli_stmt_execute($stmt);
