@@ -5,6 +5,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $username = $_POST['username'];
 $phone = $_POST['phone'];
+$uid = $_POST['uid'];
 
 $query = 'SELECT * FROM `users` WHERE `email` = ?';
 $stmt_check = $conn->prepare($query);
@@ -19,8 +20,9 @@ if ($numrow > 0) {
         'message' => 'Email đã tồn tại',
     ];
 } else {
-    $stmt = $conn->prepare('INSERT INTO `users`(`email`, `password`, `username`, `phone`) VALUES (?, ?, ?, ?)');
-    $stmt->bind_param('ssss', $email, $password, $username, $phone);
+    $stmt = $conn->prepare('INSERT INTO `users`(`email`, `password`, `username`, `phone`,  `uid`) VALUES (?, ?, ?, ?, ?)');
+
+    $stmt->bind_param('sssss', $email, $password, $username, $phone, $uid);
 
     if ($stmt->execute()) {
         $arr = [
